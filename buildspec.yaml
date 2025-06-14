@@ -21,4 +21,4 @@ phases:
 
   artifacts:
     files:
-      - packaged.yaml
+      - sam-app/packaged.yaml
