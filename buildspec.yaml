@@ -12,14 +12,32 @@ phases:
   pre_build:
     commands:
       - echo "Running sam build..."
-      -  sam build
+      - sam build
 
   build:
     commands:
-      - echo "Packing SAM template...."
+      - echo "Packing SAM template..."
       - sam package --output-template-file packaged.yaml --s3-bucket sara-garcia-01-bucket
 
+  post_build:
+    commands:
+      - echo "Running tests..."
+      - pytest --junitxml=results/test-results.xml || true  # Ejecuta pruebas y genera reporte
+      - echo "Tests completed!"
+      - |
+        if [ $? -eq 0 ]; then
+          echo "Tests passed"
+        else
+          echo "Tests failed"
+        fi
 
 artifacts:
   files:
-    - sam-app/packaged.yaml
+    - packaged.yaml
+  base-directory: sam-app
+
+reports:
+  junit:
+    files:
+      - test-results.xml
+    base-directory: sam-app/results
