@@ -31,6 +31,9 @@ phases:
           echo "Tests failed"
         fi
 
+        # Opcional: Publicar resultados de pruebas a CodeBuild
+        # aws codebuild put-test-results --region us-east-1 --project-name clase-poli --test-results file://results/test-results.xml
+
 artifacts:
   files:
     - sam-app/packaged.yaml
