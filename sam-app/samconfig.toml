@@ -23,7 +23,7 @@ image_repositories = []
 stack_name = "smg-app"
 
 [default.package.parameters]
-resolve_s3 = true
+resolve_s3 = false
 
 [default.sync.parameters]
 watch = true
