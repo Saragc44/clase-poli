@@ -33,11 +33,10 @@ phases:
 
 artifacts:
   files:
-    - packaged.yaml
-  base-directory: sam-app
+    - sam-app/packaged.yaml
 
 reports:
   junit:
     files:
-      - test-results.xml
-    base-directory: sam-app/results
+      - sam-app/results/test-results.xml
+    
